@@ -27,3 +27,5 @@
 // } else {
 //     console.log (`${Mark.name}'s BMI ${Mark.bmi} is higher than ${John.name}'s BMI ${John.bmi}`)
 // }
+
+//
