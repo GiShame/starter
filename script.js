@@ -88,4 +88,4 @@
 // }
 
 const population = [10, 80, 100, 70]
-//
+// inroduce to loop
