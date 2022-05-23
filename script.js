@@ -148,3 +148,9 @@
 // return sum
 // }
 // console.log(test(bills))
+
+// const a = document.querySelector('.a')
+// a.addEventListener('click',() => {
+//    console.log(`Hello world!`)
+// })
+
