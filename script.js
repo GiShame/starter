@@ -119,3 +119,32 @@
 //    i++
 // }
 // console.log (percentages3)
+
+
+// LAST CHALLENGE FOUNDAMENTALS PART 2
+
+// const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52]
+// const tips = []
+// const totalValues = []
+
+// const calcTip = function (bills) {
+//    return bills >= 50 && bills <=300 ? bills * 0.15 : bills * 0.2;
+// }
+
+// for (let i = 0; i < bills.length; i++) {
+//    tips.push(calcTip(bills[i]))
+//    totalValues.push(bills[i] + tips[i])
+// }
+// console.log (tips)
+// console.log (totalValues)
+
+// //Bonus task
+
+// const test = function (arr) {
+// let sum = 0
+// for (let b = 0; b < arr.length; b++) {
+//    sum += arr[b];
+// }
+// return sum
+// }
+// console.log(test(bills))
