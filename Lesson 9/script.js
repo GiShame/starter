@@ -12,7 +12,22 @@ const restaurant = {
 
   booking: function (starterIndex, starterMain) {
     return [this.starterMenu[starterIndex], this.mainMenu[starterMain]]
-  }
+  },
+  
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
 };
 
 const arr = [1, 2, 3]
@@ -34,8 +49,18 @@ console.log(first, second);
 // Example with destructarization (necessary to add ; after cnlog)
 
 [first, second] = [second, first];
-console.log(first, second);
+console.log(first, second)
 
 // Returning 2 arr values from a func in object
 const [main, secondary] = restaurant.booking(2, 0)
 console.log(main, secondary)
+
+// Nested array (array in array) destructuring
+const nestedArr = [1, 2, [3, 4]]
+const [q, , [w, e]] = nestedArr;
+console.log(q, w, e)
+
+// Default values (if we don't know how much values in arr)
+const [f, s, d = 1] = [1, 2]
+// Will be undefined on d because of no value in arr, to fix this we can set every value in arr to 1
+console.log(a, s, d)
