@@ -28,39 +28,92 @@ const restaurant = {
       close: 24,
     },
   },
+
+  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
 };
 
-const arr = [1, 2, 3]
 
-// Example of destructarization
+// Destructuring arrays
 
-const [a, b, c] = arr;
-console.log(a, b, c);
-console.log(arr);
+// const arr = [1, 2, 3]
 
-let [first, second] = restaurant.categories;
-console.log(first, second);
-// Example without destructarization by switching variables
+// // Example of destructarization
 
-// const temp = first
-// first = second
-// second = temp
+// const [a, b, c] = arr;
+// console.log(a, b, c);
+// console.log(arr);
 
-// Example with destructarization (necessary to add ; after cnlog)
+// let [first, second] = restaurant.categories;
+// console.log(first, second);
+// // Example without destructarization by switching variables
 
-[first, second] = [second, first];
-console.log(first, second)
+// // const temp = first
+// // first = second
+// // second = temp
 
-// Returning 2 arr values from a func in object
-const [main, secondary] = restaurant.booking(2, 0)
-console.log(main, secondary)
+// // Example with destructarization (necessary to add ; after cnlog)
 
-// Nested array (array in array) destructuring
-const nestedArr = [1, 2, [3, 4]]
-const [q, , [w, e]] = nestedArr;
-console.log(q, w, e)
+// [first, second] = [second, first];
+// console.log(first, second)
 
-// Default values (if we don't know how much values in arr)
-const [f, s, d = 1] = [1, 2]
-// Will be undefined on d because of no value in arr, to fix this we can set every value in arr to 1
-console.log(a, s, d)
+// // Returning 2 arr values from a func in object
+// const [main, secondary] = restaurant.booking(2, 0)
+// console.log(main, secondary)
+
+// // Nested array (array in array) destructuring
+// const nestedArr = [1, 2, [3, 4]]
+// const [q, , [w, e]] = nestedArr;
+// console.log(q, w, e)
+
+// // Default values (if we don't know how much values in arr)
+// const [f, s, d = 1] = [1, 2]
+// // Will be undefined on d because of no value in arr, to fix this we can set every value in arr to 1
+// console.log(a, s, d)
+
+// Destructuring Objects
+
+// We can add values in objects like this
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+restaurant.orderDelivery({
+  address: 'Via del Sole, 21',
+  starterIndex: 1,
+});
+
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+// Default values (if we don't need undefined in console)
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+// Mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+// This () is necessary !!!
+({ a, b } = obj);
+console.log(a, b);
+
+// Nested objects
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c);
