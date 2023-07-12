@@ -35,6 +35,12 @@ const restaurant = {
     );
   },
 
+  orderPasta(ing1, ing2, ing3) {
+    console.log(
+      `Here is your declicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+
 };
 
 // Spread
@@ -58,6 +64,24 @@ const mainMenuCopy = [...restaurant.mainMenu];
 // Join 2 arrays
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 console.log(menu);
+
+// Iterables: arrays, strings, maps, sets. NOT objects
+const str = 'Nikita';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+console.log(...str);
+// console.log(`${...str} Schmedtmann`);
+
+// Real-world example
+const ingredients = [
+  prompt("Let's make pasta! Ingredient 1?"),
+  prompt('Ingredient 2?'),
+  prompt('Ingredient 3'),
+];
+console.log(ingredients);
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+restaurant.orderPasta(...ingredients);
 
 // Destructuring arrays
 
