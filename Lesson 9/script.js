@@ -41,47 +41,89 @@ const restaurant = {
     );
   },
 
+  orderPizza(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+
 };
 
 // Spread
 
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+// const arr = [7, 8, 9];
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
 
-const newArr = [1, 2, ...arr];
-console.log(newArr);
+// const newArr = [1, 2, ...arr];
+// console.log(newArr);
 
-console.log(...newArr);
-console.log(1, 2, 7, 8, 9);
+// console.log(...newArr);
+// console.log(1, 2, 7, 8, 9);
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log(newMenu);
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log(newMenu);
 
-// Copy array
-const mainMenuCopy = [...restaurant.mainMenu];
+// // Copy array
+// const mainMenuCopy = [...restaurant.mainMenu];
 
-// Join 2 arrays
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(menu);
+// // Join 2 arrays
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(menu);
 
-// Iterables: arrays, strings, maps, sets. NOT objects
-const str = 'Nikita';
-const letters = [...str, ' ', 'S.'];
-console.log(letters);
-console.log(...str);
-// console.log(`${...str} Schmedtmann`);
+// // Iterables: arrays, strings, maps, sets. NOT objects
+// const str = 'Nikita';
+// const letters = [...str, ' ', 'S.'];
+// console.log(letters);
+// console.log(...str);
+// // console.log(`${...str} Schmedtmann`);
 
-// Real-world example
-const ingredients = [
-  prompt("Let's make pasta! Ingredient 1?"),
-  prompt('Ingredient 2?'),
-  prompt('Ingredient 3'),
+// // Real-world example
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredient 1?"),
+//   prompt('Ingredient 2?'),
+//   prompt('Ingredient 3'),
+// ];
+// console.log(ingredients);
+
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+// restaurant.orderPasta(...ingredients);
+
+// Rest Pattern and Parameters
+// 1) Destructuring
+
+// SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
+
+// REST, because on LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+
+const [pizza, , sir, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
 ];
-console.log(ingredients);
+console.log(pizza, sir, otherFood);
 
-restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
-restaurant.orderPasta(...ingredients);
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+// 2) Functions
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+
+add(2, 3);
+add(1, 2, 3, 5);
+add(1, 2, 3, 3, 2, 1, 8);
+
+const x = [1, 2, 3];
+add(...x);
+
+restaurant.orderPizza('gribi', 'maslo', 'olives', 'spinach');
+restaurant.orderPizza('gribi');
 
 // Destructuring arrays
 
