@@ -92,38 +92,38 @@ const restaurant = {
 // 1) Destructuring
 
 // SPREAD, because on RIGHT side of =
-const arr = [1, 2, ...[3, 4]];
+// const arr = [1, 2, ...[3, 4]];
 
-// REST, because on LEFT side of =
-const [a, b, ...others] = [1, 2, 3, 4, 5];
-console.log(a, b, others);
+// // REST, because on LEFT side of =
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, others);
 
-const [pizza, , sir, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
-console.log(pizza, sir, otherFood);
+// const [pizza, , sir, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(pizza, sir, otherFood);
 
-// Objects
-const { sat, ...weekdays } = restaurant.openingHours;
-console.log(weekdays);
+// // Objects
+// const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(weekdays);
 
-// 2) Functions
-const add = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
-  console.log(sum);
-};
+// // 2) Functions
+// const add = function (...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// };
 
-add(2, 3);
-add(1, 2, 3, 5);
-add(1, 2, 3, 3, 2, 1, 8);
+// add(2, 3);
+// add(1, 2, 3, 5);
+// add(1, 2, 3, 3, 2, 1, 8);
 
-const x = [1, 2, 3];
-add(...x);
+// const x = [1, 2, 3];
+// add(...x);
 
-restaurant.orderPizza('gribi', 'maslo', 'olives', 'spinach');
-restaurant.orderPizza('gribi');
+// restaurant.orderPizza('gribi', 'maslo', 'olives', 'spinach');
+// restaurant.orderPizza('gribi');
 
 // Destructuring arrays
 
@@ -204,3 +204,66 @@ restaurant.orderPizza('gribi');
 //   fri: { open: o, close: c },
 // } = openingHours;
 // console.log(o, c);
+
+// Short Circuiting (&& and ||)
+
+console.log('---- OR ----');
+// Use ANY data type, return ANY data type, short-circuiting
+console.log(3 || 'Nikita');
+console.log('' || 'Nikita');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('---- AND ----');
+console.log(0 && 'Nikita');
+console.log(7 && 'Nikita');
+
+console.log('Hello' && 23 && null && 'Nikita');
+
+// Practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('gribs', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('gribs', 'spinach');
+
+// Logical Assignment Operators
+const rest1 = {
+  name: 'PitStop',
+  // numGuests: 20,
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: 'gogopizza',
+  owner: 'Tadjik',
+};
+
+// OR assignment operator
+// rest1.numGuests = rest1.numGuests || 5;
+// rest2.numGuests = rest2.numGuests || 5;
+// rest1.numGuests ||= 5;
+// rest2.numGuests ||= 5;
+
+// nullish assignment operator (null or undefined)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+// AND assignment operator
+// rest1.owner = rest1.owner && '<Hach>';
+// rest2.owner = rest2.owner && '<Hach>';
+
+rest1.owner &&= '<Hach>';
+rest2.owner &&= '<Hach>';
+
+console.log(rest1);
+console.log(rest2);
